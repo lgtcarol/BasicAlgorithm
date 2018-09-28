@@ -1,11 +1,11 @@
 package dynamicplan;
-
+//è¿˜æœ‰å››æ–¹å’Œï¼ŒBFSéå†çš„è§£æ³•
 import java.awt.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PerfectSquares {
-	/**½â·¨Ò» £ºµ¼³öÁË¶¯Ì¬¹æ»®µÄ±í´ïÊ½
+	/**è§£æ³•ä¸€ ï¼šå¯¼å‡ºäº†åŠ¨æ€è§„åˆ’çš„è¡¨è¾¾å¼
 	public int numSquares(int n) {
 		if(n < 0)
 			return 0;
@@ -18,8 +18,8 @@ public class PerfectSquares {
 		return cntPerfectSquares[n];		
 	}
 	*/
-	/**½â·¨¶ş£ºÈİÒ×Ïëµ½µÄ¶¯Ì¬¹æ»®Ë¼Ïë:iµÄÍêÈ«Æ½·½ÊıÊÇ´ÓºÍiµÄÁ½¸öÍêÈ«Æ½·½Êıdp[j]ºÍdp[i-j]Ö®ºÍ£¬È»ºóÈ¡×îĞ¡
-	 * ÓÃ dp[i] Êı×é´æ´¢µÚ i ¸öÊıµÄÍêÃÀÆ½·½Êı¡£µİÍÆÊ½Îª£ºdp[i] = Math.max(dp[j] + dp[i-j], dp[i])
+	/**è§£æ³•äºŒï¼šå®¹æ˜“æƒ³åˆ°çš„åŠ¨æ€è§„åˆ’æ€æƒ³:içš„å®Œå…¨å¹³æ–¹æ•°æ˜¯ä»å’Œiçš„ä¸¤ä¸ªå®Œå…¨å¹³æ–¹æ•°dp[j]å’Œdp[i-j]ä¹‹å’Œï¼Œç„¶åå–æœ€å°
+	 * ç”¨ dp[i] æ•°ç»„å­˜å‚¨ç¬¬ i ä¸ªæ•°çš„å®Œç¾å¹³æ–¹æ•°ã€‚é€’æ¨å¼ä¸ºï¼šdp[i] = Math.max(dp[j] + dp[i-j], dp[i])
 	public int numSquares(int n) {
 		int[] dp = new int[n+1];
 		Arrays.fill(dp, Integer.MAX_VALUE);
@@ -27,8 +27,8 @@ public class PerfectSquares {
 		for( int i = 1; i <= n; i++) {
 			int sqr = (int)Math.sqrt(i);
 			if(sqr*sqr == i)
-				dp[i] = 1;//Èôi±¾Éí¾ÍÊÇÆ½·½ÊıÔò½«dp[i]ÖÃ1
-			else//´Ó1¿ªÊ¼±éÀúËùÓĞºÍÎªiµÄdp,Ê¹µÃdp[i]È¡µÃ×îĞ¡
+				dp[i] = 1;//è‹¥iæœ¬èº«å°±æ˜¯å¹³æ–¹æ•°åˆ™å°†dp[i]ç½®1
+			else//ä»1å¼€å§‹éå†æ‰€æœ‰å’Œä¸ºiçš„dp,ä½¿å¾—dp[i]å–å¾—æœ€å°
 				for(int j = 1; j <= i/2; j++)
 					dp[i] = Math.min(dp[j]+dp[i-j], dp[i]);
 		}
@@ -36,17 +36,17 @@ public class PerfectSquares {
 	}
 	*/
 	//https://blog.csdn.net/happyaaaaaaaaaaa/article/details/51584790
-	//½â·¨Èı:´Ó½â·¨¶şÖĞ¸ÄÁ¼µÃËùÓĞÍêÃÀÆ½·½Êı¶¼¿ÉÒÔ¿´×÷Ò»¸öÆÕÍ¨Êı¼ÓÉÏÒ»¸öÍêÃÀÆ½·½Êı
-	//µİÍÆÊ½¾Í±äÎªÁË£ºdp[i + j * j] = Math.min(dp[i] + 1, dp[i + j * j])
-	//???¶Ô±È½â·¨Ò»£ºÕë¶Ô²»Í¬µÃ³õÊ¼Öµ£¬Á½¸öµİ¹éÊ½Õæ²»Í¬Âğ£¿
+	//è§£æ³•ä¸‰:ä»è§£æ³•äºŒä¸­æ”¹è‰¯å¾—æ‰€æœ‰å®Œç¾å¹³æ–¹æ•°éƒ½å¯ä»¥çœ‹ä½œä¸€ä¸ªæ™®é€šæ•°åŠ ä¸Šä¸€ä¸ªå®Œç¾å¹³æ–¹æ•°
+	//é€’æ¨å¼å°±å˜ä¸ºäº†ï¼šdp[i + j * j] = Math.min(dp[i] + 1, dp[i + j * j])
+	//???å¯¹æ¯”è§£æ³•ä¸€ï¼šé’ˆå¯¹ä¸åŒå¾—åˆå§‹å€¼ï¼Œä¸¤ä¸ªé€’å½’å¼çœŸä¸åŒå—ï¼Ÿ
 	    public int numSquares(int n) {
 	        int[] dp = new int[n+1];
 	        Arrays.fill(dp, Integer.MAX_VALUE);
 	        for(int i = 0; i * i <= n; i++) 
 	            dp[i * i] = 1;
-	        for(int i = 1; i <= n; i++) {  //Ñ¡¶¨µÚÒ»¸öÊıÎª i
-	            for(int j = 1; i + j * j <= n; j++) {  //Ñ¡¶¨ÁíÒ»¸öÊıÎª j*j
-	                dp[i + j * j] = Math.min(dp[i] + 1, dp[i + j * j]);  //´ÓĞ¡µ½´ó²éÕÒ
+	        for(int i = 1; i <= n; i++) {  //é€‰å®šç¬¬ä¸€ä¸ªæ•°ä¸º i
+	            for(int j = 1; i + j * j <= n; j++) {  //é€‰å®šå¦ä¸€ä¸ªæ•°ä¸º j*j
+	                dp[i + j * j] = Math.min(dp[i] + 1, dp[i + j * j]);  //ä»å°åˆ°å¤§æŸ¥æ‰¾
 	            }
 	        }
 	        return dp[n];

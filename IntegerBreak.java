@@ -1,7 +1,8 @@
 package dynamicplan;
 
 public class IntegerBreak {
-	/**½â·¨Ò»£ºµ¼³ö¶¯Ì¬¹æ»®±í´ïÊ½£¬ÓÃÊı×éĞÎÊ½½øĞĞ¶¯Ì¬¹æ»®
+	/**è§£æ³•ä¸€ï¼šå¯¼å‡ºåŠ¨æ€è§„åˆ’è¡¨è¾¾å¼ï¼Œç”¨æ•°ç»„å½¢å¼è¿›è¡ŒåŠ¨æ€è§„åˆ’
+	//https://blog.csdn.net/qq_28038873/article/details/81670661ææ¸…æ¥šè‡ªé¡¶å‘ä¸‹å’Œè‡ªåº•å‘ä¸Šä¸¤ç§åŠ¨æ€è§£å†³æ€è·¯ã€‚
 	public int integerBreak(int n) {
 		int[] dp = new int[n+1];
 		dp[1] = 1;
@@ -13,7 +14,7 @@ public class IntegerBreak {
 		return dp[n];
 	}
 	*/
-	//Í¨¹ıÃ¶¾Ù·ÖÎöµÃµ½£º´Ón=5¿ªÊ¼³ÊÏÖ¹æÂÉhttps://blog.csdn.net/seagal890/article/details/79474473
+	//é€šè¿‡æšä¸¾åˆ†æå¾—åˆ°ï¼šä»n=5å¼€å§‹å‘ˆç°è§„å¾‹https://blog.csdn.net/seagal890/article/details/79474473
 	public int integerBreak(int n) {
 		int result = 1;
 		if (n == 2 || n == 3)

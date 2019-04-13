@@ -1,53 +1,58 @@
-//Êı×Ötring´®»¥×ª
-int pos = str.find(' ', 0); //°´¿Õ¸ñÇĞ·Ö
+//æ•°å­—tringä¸²äº’è½¬
+int pos = str.find(' ', 0); //æŒ‰ç©ºæ ¼åˆ‡åˆ†
 if(pos < str.length())
 {
 	string s1 = str.substr(0, pos);
 	string s2 = str.substr(pos+1, str.length()-pos);
-	stringstream ss; //×Ö·û´®×ªÎªÊı×Ö
+	stringstream ss; //å­—ç¬¦ä¸²è½¬ä¸ºæ•°å­—
 	ss << s1;
 	double n ;
 	ss >> n;
 	cout << n << endl;
 
-	stringstream ss; //Êı×Ö×ª×Ö·û´®
-	ss<<num;   //½«Êı×Ö´«ÈëÁ÷ÖĞ
+	stringstream ss; //æ•°å­—è½¬å­—ç¬¦ä¸²
+	ss<<num;   //å°†æ•°å­—ä¼ å…¥æµä¸­
 	string result;
 	ss>>result;
 }
-//stringºÍchar*»¥×ª
+//stringå’Œchar*äº’è½¬
     string s="xiaoming";
-    const char *a=s.c_str();//È¥µôconst»áÏÔÊ¾±àÒë´íÎó
+    const char *a=s.c_str();//å»æ‰constä¼šæ˜¾ç¤ºç¼–è¯‘é”™è¯¯
     const char *b=s.data();
     printf("a:[%s],b:[%s]\n",a,b);
 
-//³£ÓÃÑ­»·
+//å¸¸ç”¨å¾ªç¯
 for(int i = 0; i < arr.size(); i++)
 {
 	cout << arr[i][0] << ' ' << arr[i][1] << endl;
 }
 
-//¾«¶È¿ØÖÆ
+//ç²¾åº¦æ§åˆ¶
 #include <iomanip>
 cout.precision(2);
 cout << fixed << s << endl;
 
-//×Ö·ûÅĞ¶Ï
-	if(isalpha(c)) //ÅĞ¶Ï×ÖÄ¸
+//å­—ç¬¦åˆ¤æ–­
+	if(isalpha(c)) //åˆ¤æ–­å­—æ¯
 		cout << "c is alpha" << endl;
-//	if(isalnum(c))  ÅĞ¶Ï×ÖÄ¸»òÊı×Ö
+//	if(isalnum(c))  åˆ¤æ–­å­—æ¯æˆ–æ•°å­—
 //		cout << "c is num";
 	if(islower(c))
-		cout << (char)toupper(c); //×ªÎª´óĞ´ºóĞèÇ¿×ªÎªchar
-		cout << (char)toupper(c); //×ªÎª´óĞ´ºóĞèÇ¿×ªÎªchar
+		cout << (char)toupper(c); //è½¬ä¸ºå¤§å†™åéœ€å¼ºè½¬ä¸ºchar
+		cout << (char)toupper(c); //è½¬ä¸ºå¤§å†™åéœ€å¼ºè½¬ä¸ºchar
 	return 0;
-//ÊäÈëÑùÀı£º31 18 19 1 25
-int num[100];    //intĞÍÊı×éÓÃÓÚ´æ´¢ÊäÈë±äÁ¿
+//è¾“å…¥æ ·ä¾‹ï¼š31 18 19 1 25
+int num[100];    //intå‹æ•°ç»„ç”¨äºå­˜å‚¨è¾“å…¥å˜é‡
 int i=0;
 while (cin>>num[i]){
     cout<<num[i]<<" ";
     i++;
 }
+//å­—ç¬¦ä¸²è½¬ç½®ï¼ˆstring å’Œ éstringï¼‰
+#include <algorithm>
+reverse(s.begin(), s.end());
+#include <cstring>
+strrev(s);
 
 
 

@@ -34,8 +34,8 @@ public:
                     endi = j;
                 }//更新保存最长结果
            }
-
        }
+      //注意未delete. 具体逐维delete[]
         return s.substr(st,endi-st+1);
     }
 };

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <vector>
-#include <stdlib.h>
+#include <stdlib.h> //æ³¨æ„ï¼šéšæœºå‡½æ•°çš„å¤´æ–‡ä»¶
 using namespace std;
 const int len = 10;
 
@@ -27,25 +27,25 @@ void sort1(vector<int> &a)
 int partion(vector<int> &a, int l, int h);
 void sort2(vector<int> &a, int l, int h) 
 {
-	//·ÖÖÎÃæÏòµÄ¾ÍÊÇÏÂ±ê£¬×ÔÈ»µÃ´«µİ
-	//±¾²½²»¼ìÑéµÄ»°,²»¿ÉÒÔ£¡£¡×Ôµİ¹éµÄ³ö¿Ú°¡
+	//åˆ†æ²»é¢å‘çš„å°±æ˜¯ä¸‹æ ‡ï¼Œè‡ªç„¶å¾—ä¼ é€’
+	//æœ¬æ­¥ä¸æ£€éªŒçš„è¯,ä¸å¯ä»¥ï¼ï¼è‡ªé€’å½’çš„å‡ºå£å•Š
 	if(l < h)
 	{
 		int m = partion(a, l, h);
-		sort2(a, l, m-1); //ÒÑ¾­·ÅºÃÁËÒ»¸öÎ»ÖÃ
+		sort2(a, l, m-1); //å·²ç»æ”¾å¥½äº†ä¸€ä¸ªä½ç½®
 		sort2(a, m+1, h); 
 	} 
 
 }
 int partion(vector<int> &a, int l, int h)
 {
-	int pvt = a[l]; //×Óµ¥ÔªµÄ a[l]´¦¿ÕÎ»ÖÃ 
-	while(l < h) //ÎÒÈÏÎªÏàµÈÎŞÒâÒå,¶ø¶ş·Ö²åÈëÄÇ¶ùÏàµÈºó»¹µÃÈ·¶¨¸ÃÔªËØµÄ×ó±ß»¹ÊÇÓÒ±ß 
+	int pvt = a[l]; //å­å•å…ƒçš„ a[l]å¤„ç©ºä½ç½® 
+	while(l < h) //æˆ‘è®¤ä¸ºç›¸ç­‰æ— æ„ä¹‰,è€ŒäºŒåˆ†æ’å…¥é‚£å„¿ç›¸ç­‰åè¿˜å¾—ç¡®å®šè¯¥å…ƒç´ çš„å·¦è¾¹è¿˜æ˜¯å³è¾¹ 
 	{
-		while(h > l && a[h]>pvt) //ÏÂ±ê±È½ÏÕâ¶ù²»È¡µÈ£¬µÈºÅÇé¿ö»¹ÔÊĞí×ÔÔö×Ô¼õµÄ»°²»¾ÍÔ½½çÁËÃ´! 
+		while(h > l && a[h]>pvt) //ä¸‹æ ‡æ¯”è¾ƒè¿™å„¿ä¸å–ç­‰ï¼Œç­‰å·æƒ…å†µè¿˜å…è®¸è‡ªå¢è‡ªå‡çš„è¯ä¸å°±è¶Šç•Œäº†ä¹ˆ! 
 			h--;
 		a[l] = a[h];
-		while(l < h && a[l]<=pvt)
+		while(l < h && a[l]<=pvt)//æ³¨æ„ï¼šå”¯ä¸€çš„ä¸€ä¸ªç­‰å·ï¼
 			l++;
 		a[h] = a[l];
 	}	
@@ -54,18 +54,18 @@ int partion(vector<int> &a, int l, int h)
 } 
 int main(void)
 {
-	srand(time(NULL));
+	srand(time(NULL)); //ç§å­åˆå§‹åŒ–
 	vector<int> arr;
 	for(int i = 0; i < len; i++)
-		arr.push_back(rand()%100);
-	cout << "³õÊ¼Êı×é£º";
+		arr.push_back(rand()%100); //éšæœºç”Ÿæˆ
+	cout << "åˆå§‹æ•°ç»„ï¼š";
 	for(int i = 0; i < len; i++)
 		cout << arr[i] << ' ';
 	cout << endl;
 //	sort1(arr);
 	sort2(arr,  0, arr.size()-1); 
 	
-	cout << "ÅÅĞòÊı×é£º";
+	cout << "æ’åºæ•°ç»„ï¼š";
 	for(int i = 0; i < len; i++)
 		cout << arr[i] << ' ';
 	cout << endl;

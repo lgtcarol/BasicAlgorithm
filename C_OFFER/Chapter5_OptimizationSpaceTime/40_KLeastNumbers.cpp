@@ -1,6 +1,6 @@
-// ÃæÊÔÌâ40£º×îĞ¡µÄk¸öÊı
-// ÌâÄ¿£ºÊäÈën¸öÕûÊı£¬ÕÒ³öÆäÖĞ×îĞ¡µÄk¸öÊı¡£ÀıÈçÊäÈë4¡¢5¡¢1¡¢6¡¢2¡¢7¡¢3¡¢8
-// Õâ8¸öÊı×Ö£¬Ôò×îĞ¡µÄ4¸öÊı×ÖÊÇ1¡¢2¡¢3¡¢4¡£
+// é¢è¯•é¢˜40ï¼šæœ€å°çš„kä¸ªæ•°
+// é¢˜ç›®ï¼šè¾“å…¥nä¸ªæ•´æ•°ï¼Œæ‰¾å‡ºå…¶ä¸­æœ€å°çš„kä¸ªæ•°ã€‚ä¾‹å¦‚è¾“å…¥4ã€5ã€1ã€6ã€2ã€7ã€3ã€8
+// è¿™8ä¸ªæ•°å­—ï¼Œåˆ™æœ€å°çš„4ä¸ªæ•°å­—æ˜¯1ã€2ã€3ã€4ã€‚
 
 #include <cstdio>
 #include "Utilities\Array.cpp"
@@ -8,15 +8,15 @@
 #include <set>
 #include <vector>
 #include <iostream>
-#include <functional>//¸ÃÍ·ÎÄ¼şÖĞ¶¨ÒåµÄÁ½¸ö½á¹¹greaterºÍless¶¼ÖØÔØÁË²Ù×÷·û()
+#include <functional>//è¯¥å¤´æ–‡ä»¶ä¸­å®šä¹‰çš„ä¸¤ä¸ªç»“æ„greaterå’Œlesséƒ½é‡è½½äº†æ“ä½œç¬¦()
 
 using namespace std;
 
 /**
-1. ±ÈÉÏÌâÌØÕ÷¸üÃ÷ÏÔÊÊºÏ¿ìÅÅ
-2. Í¬ÑùÈ·¶¨µ½Ä¿±êÎªk-1 ¼´¿É·µ»Ø·ÖÎö´ïµ½Ä¿±êÒªÇó 
+1. æ¯”ä¸Šé¢˜ç‰¹å¾æ›´æ˜æ˜¾é€‚åˆå¿«æ’
+2. åŒæ ·ç¡®å®šåˆ°ç›®æ ‡ä¸ºk-1 å³å¯è¿”å›åˆ†æè¾¾åˆ°ç›®æ ‡è¦æ±‚ 
 */
-// ====================·½·¨1====================
+// ====================æ–¹æ³•1====================
 void GetLeastNumbers_Solution1(int* input, int n, int* output, int k)
 {
     if(input == nullptr || output == nullptr || k > n || n <= 0 || k <= 0)
@@ -44,11 +44,11 @@ void GetLeastNumbers_Solution1(int* input, int n, int* output, int k)
 }
 
 /**
-STLÖĞÈı¸ö¹Ø¼üµã£ºÈİÆ÷£¬µü´úÆ÷£¬Ëã·¨ 
+STLä¸­ä¸‰ä¸ªå…³é”®ç‚¹ï¼šå®¹å™¨ï¼Œè¿­ä»£å™¨ï¼Œç®—æ³• 
 */ 
-// ====================·½·¨2====================
-typedef multiset<int, std::greater<int> >            intSet;
-typedef multiset<int, std::greater<int> >::iterator  setIterator;
+// ====================æ–¹æ³•2====================
+typedef multiset<int, std::greater<int> >            intSet; //å¤§é¡¶å †
+typedef multiset<int, std::greater<int> >::iterator  setIterator; //æœ¬é¢˜ä½¿ç”¨è¿­ä»£åˆ é™¤æ˜¯multisetåœ¨åˆ é™¤å€¼æ—¶ä¼šåˆ å¤šä¸ªç›¸ç­‰å€¼
 
 typedef multiset
 void GetLeastNumbers_Solution2(const vector<int>& data, intSet& leastNumbers, int k)
@@ -63,12 +63,10 @@ void GetLeastNumbers_Solution2(const vector<int>& data, intSet& leastNumbers, in
     {
         if((leastNumbers.size()) < k)
             leastNumbers.insert(*iter);
-
         else
         {
-        	//Note:¶¨ÒåmultisetÖ¸Õë£¬ÓÉÓÚÔÚÄ£°å³õÊ¼»¯µÄµÚ¶ş¸ö²ÎÊı£¬¿ÉÍÆ²âÊÇ½«ÈİÆ÷ÖĞÔªËØ´Ó´óµ½Ğ¡ÅÅÁĞÁË 
-        	//Note:ÒòÎªµü´úÆ÷ÊÇÖ¸Õë£¬¹ÊÈ¡ÈİÆ÷ÖĞµÄÖµÊ±×¢Òâ 
-            setIterator iterGreatest = leastNumbers.begin();
+        	//Note:å› ä¸ºè¿­ä»£å™¨æ˜¯æŒ‡é’ˆï¼Œæ•…å–å®¹å™¨ä¸­çš„å€¼æ—¶æ³¨æ„ 
+            setIterator iterGreatest = leastNumbers.begin();////multisetè®¿é—®å¿…é¡»å®šä¹‰è¿­ä»£å™¨ï¼Œä¸”begin()è¿”å›çš„ä¸æ˜¯å€¼ï¼
 
             if(*iter < *(leastNumbers.begin()))
             {
@@ -79,7 +77,7 @@ void GetLeastNumbers_Solution2(const vector<int>& data, intSet& leastNumbers, in
     }
 }
 
-// ====================²âÊÔ´úÂë====================
+// ====================æµ‹è¯•ä»£ç ====================
 void Test(char* testName, int* data, int n, int* expectedResult, int k)
 {
     if(testName != nullptr)
@@ -120,7 +118,7 @@ void Test(char* testName, int* data, int n, int* expectedResult, int k)
     printf("\n\n");
 }
 
-// kĞ¡ÓÚÊı×éµÄ³¤¶È
+// kå°äºæ•°ç»„çš„é•¿åº¦
 void Test1()
 {
     int data[] = {4, 5, 1, 6, 2, 7, 3, 8};
@@ -128,7 +126,7 @@ void Test1()
     Test("Test1", data, sizeof(data) / sizeof(int), expected, sizeof(expected) / sizeof(int));
 }
 
-// kµÈÓÚÊı×éµÄ³¤¶È
+// kç­‰äºæ•°ç»„çš„é•¿åº¦
 void Test2()
 {
     int data[] = {4, 5, 1, 6, 2, 7, 3, 8};
@@ -136,7 +134,7 @@ void Test2()
     Test("Test2", data, sizeof(data) / sizeof(int), expected, sizeof(expected) / sizeof(int));
 }
 
-// k´óÓÚÊı×éµÄ³¤¶È
+// kå¤§äºæ•°ç»„çš„é•¿åº¦
 void Test3()
 {
     int data[] = {4, 5, 1, 6, 2, 7, 3, 8};
@@ -144,7 +142,7 @@ void Test3()
     Test("Test3", data, sizeof(data) / sizeof(int), expected, 10);
 }
 
-// kµÈÓÚ1
+// kç­‰äº1
 void Test4()
 {
     int data[] = {4, 5, 1, 6, 2, 7, 3, 8};
@@ -152,7 +150,7 @@ void Test4()
     Test("Test4", data, sizeof(data) / sizeof(int), expected, sizeof(expected) / sizeof(int));
 }
 
-// kµÈÓÚ0
+// kç­‰äº0
 void Test5()
 {
     int data[] = {4, 5, 1, 6, 2, 7, 3, 8};
@@ -160,7 +158,7 @@ void Test5()
     Test("Test5", data, sizeof(data) / sizeof(int), expected, 0);
 }
 
-// Êı×éÖĞÓĞÏàÍ¬µÄÊı×Ö
+// æ•°ç»„ä¸­æœ‰ç›¸åŒçš„æ•°å­—
 void Test6()
 {
     int data[] = {4, 5, 1, 6, 2, 7, 2, 8};
@@ -168,7 +166,7 @@ void Test6()
     Test("Test6", data, sizeof(data) / sizeof(int), expected, sizeof(expected) / sizeof(int));
 }
 
-// ÊäÈë¿ÕÖ¸Õë
+// è¾“å…¥ç©ºæŒ‡é’ˆ
 void Test7()
 {
     int* expected = nullptr;

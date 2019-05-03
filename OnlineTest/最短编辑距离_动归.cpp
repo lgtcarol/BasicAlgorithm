@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-/**ÏÈ²»¿¼ÂÇ×ªÒÆ·½³ÌÖĞµÄÄÇÁ½¸öÊÇÉ¾³ı»¹ÊÇ²åÈë*/
+/**å…ˆä¸è€ƒè™‘è½¬ç§»æ–¹ç¨‹ä¸­çš„é‚£ä¸¤ä¸ªæ˜¯åˆ é™¤è¿˜æ˜¯æ’å…¥*/
 int min_of3(int x, int y, int z)
 {
     if(x > y)
@@ -16,7 +16,7 @@ int minDistance(string word1, string word2)
     int i = 0, j = 0;
     int row = word1.length();
     int col = word2.length();
-    int edit[row+1][col+1]; //×¢Òâ£ºÓë×Ö·û´®¸÷Î»¶Ô±ÈÊ±£¬¶àÁËÒ»ĞĞindex=0µÄ¿Õ¼ä£¬¹ÊÔÚ×Ö·û´®±È¶ÔÊ±Òª×¢ÒâÏÂ±ê
+    int edit[row+1][col+1]; //æ³¨æ„ï¼šä¸å­—ç¬¦ä¸²å„ä½å¯¹æ¯”æ—¶ï¼Œå¤šäº†ä¸€è¡Œindex=0çš„ç©ºé—´ï¼Œæ•…åœ¨å­—ç¬¦ä¸²æ¯”å¯¹æ—¶è¦æ³¨æ„ä¸‹æ ‡
     edit[0][0] = 0;
     for(j = 1; j <= col; j++)
     {
@@ -26,14 +26,13 @@ int minDistance(string word1, string word2)
     {
         edit[i][0] = i;
     }
-    bool flag = false;
-    for(i = 1; i <= row; i++)
+//æ³¨æ„å†…å¤–å¾ªç¯ä¸‹æ ‡
     for(i = 0; i < row; i++)
         for(int j = 0; j < col; j++)
     {
-        if(word1[i] == word2[j]) //×¢Òâ£ºµ±ÏàµÈÊ±²»ĞèÒª±à¼­
+        if(word1[i] == word2[j]) //æ³¨æ„ï¼šå½“ç›¸ç­‰æ—¶ä¸éœ€è¦ç¼–è¾‘
             edit[i+1][j+1] = edit[i][j];
-        else                     //²»µÈÊ±£º²Å´ÓÈıÖÖÖĞ¿¼ÂÇÒ»ÖÖÇé¿ö
+        else                     //ä¸ç­‰æ—¶ï¼šæ‰ä»ä¸‰ç§ä¸­è€ƒè™‘ä¸€ç§æƒ…å†µ
             edit[i+1][j+1] = min_of3(edit[i][j+1]+1, edit[i+1][j]+1, edit[i][j]+1);
     }
     return edit[row][col];

@@ -1,11 +1,11 @@
-// ÃæÊÔÌâ56£¨¶ş£©£ºÊı×éÖĞÎ¨Ò»Ö»³öÏÖÒ»´ÎµÄÊı×Ö
-// ÌâÄ¿£ºÔÚÒ»¸öÊı×éÖĞ³ıÁËÒ»¸öÊı×ÖÖ»³öÏÖÒ»´ÎÖ®Íâ£¬ÆäËûÊı×Ö¶¼³öÏÖÁËÈı´Î¡£Çë
-// ÕÒ³öÄÇ¸ö³Ô³öÏÖÒ»´ÎµÄÊı×Ö¡£
+// é¢è¯•é¢˜56ï¼ˆäºŒï¼‰ï¼šæ•°ç»„ä¸­å”¯ä¸€åªå‡ºç°ä¸€æ¬¡çš„æ•°å­—
+// é¢˜ç›®ï¼šåœ¨ä¸€ä¸ªæ•°ç»„ä¸­é™¤äº†ä¸€ä¸ªæ•°å­—åªå‡ºç°ä¸€æ¬¡ä¹‹å¤–ï¼Œå…¶ä»–æ•°å­—éƒ½å‡ºç°äº†ä¸‰æ¬¡ã€‚è¯·
+// æ‰¾å‡ºé‚£ä¸ªåƒå‡ºç°ä¸€æ¬¡çš„æ•°å­—ã€‚
 
 #include <cstdio>
 #include <exception>
 /**
-¸ü¶à¼ûÕÕÆ¬±Ê¼Ç 
+æ›´å¤šè§ç…§ç‰‡ç¬”è®° 
 */
 int FindNumberAppearingOnce(int numbers[], int length)
 {
@@ -13,12 +13,13 @@ int FindNumberAppearingOnce(int numbers[], int length)
         throw new std::exception("Invalid input.");
 
     int bitSum[32] = {0};
-    for(int i = 0; i < length; ++i)//lgt:ÈçºÎÈ¡³öintµÄ¸÷bitÎ» 
+    for(int i = 0; i < length; ++i)//lgt:å¦‚ä½•å–å‡ºintçš„å„bitä½ 
     {
         int bitMask = 1;
+        //å¯¹äºæ¯ä¸ªæ•´æ•°ä¸­1çš„è®¡æ•°å¿…é¡»é€šè¿‡è¯¥index forå¾ªç¯ï¼Œå› å¤šä¸ªæ•°äº¤å‰ä½¿ç”¨æ•°ç»„bitSumï¼
         for(int j = 31; j >= 0; --j)
         {
-            int bit = numbers[i] & bitMask;//£¡£¡£¡ 
+            int bit = numbers[i] & bitMask;//ï¼ï¼ï¼ 
             if(bit != 0)
                 bitSum[j] += 1;
 
@@ -36,7 +37,7 @@ int FindNumberAppearingOnce(int numbers[], int length)
     return result;
 }
 
-// ====================²âÊÔ´úÂë====================
+// ====================æµ‹è¯•ä»£ç ====================
 void Test(const char* testName, int numbers[], int length, int expected)
 {
     int result = FindNumberAppearingOnce(numbers, length);
@@ -46,7 +47,7 @@ void Test(const char* testName, int numbers[], int length, int expected)
         printf("%s FAILED.\n", testName);
 }
 
-// ËùÓĞÊı×Ö¶¼ÊÇÕıÊı£¬Î¨Ò»µÄÊı×ÖÊÇ×îĞ¡µÄ
+// æ‰€æœ‰æ•°å­—éƒ½æ˜¯æ­£æ•°ï¼Œå”¯ä¸€çš„æ•°å­—æ˜¯æœ€å°çš„
 void Test1()
 {
     int numbers[] = { 1, 1, 2, 2, 2, 1, 3 };
@@ -54,7 +55,7 @@ void Test1()
     Test("Test1", numbers, sizeof(numbers) / sizeof(int), expected);
 }
 
-// ËùÓĞÊı×Ö¶¼ÊÇÕıÊı£¬Î¨Ò»µÄÊı×ÖµÄ´óĞ¡Î»ÓÚÖĞ¼ä
+// æ‰€æœ‰æ•°å­—éƒ½æ˜¯æ­£æ•°ï¼Œå”¯ä¸€çš„æ•°å­—çš„å¤§å°ä½äºä¸­é—´
 void Test2()
 {
     int numbers[] = { 4, 3, 3, 2, 2, 2, 3 };
@@ -62,7 +63,7 @@ void Test2()
     Test("Test2", numbers, sizeof(numbers) / sizeof(int), expected);
 }
 
-// ËùÓĞÊı×Ö¶¼ÊÇÕıÊı£¬Î¨Ò»µÄÊı×ÖÊÇ×î´óµÄ
+// æ‰€æœ‰æ•°å­—éƒ½æ˜¯æ­£æ•°ï¼Œå”¯ä¸€çš„æ•°å­—æ˜¯æœ€å¤§çš„
 void Test3()
 {
     int numbers[] = { 4, 4, 1, 1, 1, 7, 4 };
@@ -70,7 +71,7 @@ void Test3()
     Test("Test3", numbers, sizeof(numbers) / sizeof(int), expected);
 }
 
-// Î¨Ò»µÄÊı×ÖÊÇ¸ºÊı
+// å”¯ä¸€çš„æ•°å­—æ˜¯è´Ÿæ•°
 void Test4()
 {
     int numbers[] = { -10, 214, 214, 214 };
@@ -78,7 +79,7 @@ void Test4()
     Test("Test4", numbers, sizeof(numbers) / sizeof(int), expected);
 }
 
-// ³ıÁËÎ¨Ò»µÄÊı×Ö£¬ÆäËûÊı×Ö¶¼ÊÇ¸ºÊı
+// é™¤äº†å”¯ä¸€çš„æ•°å­—ï¼Œå…¶ä»–æ•°å­—éƒ½æ˜¯è´Ÿæ•°
 void Test5()
 {
     int numbers[] = { -209, 3467, -209, -209 };
@@ -86,7 +87,7 @@ void Test5()
     Test("Test5", numbers, sizeof(numbers) / sizeof(int), expected);
 }
 
-// ÖØ¸´µÄÊı×ÖÓĞÕıÊıÒ²ÓĞ¸ºÊı
+// é‡å¤çš„æ•°å­—æœ‰æ­£æ•°ä¹Ÿæœ‰è´Ÿæ•°
 void Test6()
 {
     int numbers[] = { 1024, -1025, 1024, -1025, 1024, -1025, 1023 };
@@ -94,7 +95,7 @@ void Test6()
     Test("Test6", numbers, sizeof(numbers) / sizeof(int), expected);
 }
 
-// ËùÓĞÊı×Ö¶¼ÊÇ¸ºÊı
+// æ‰€æœ‰æ•°å­—éƒ½æ˜¯è´Ÿæ•°
 void Test7()
 {
     int numbers[] = { -1024, -1024, -1024, -1023 };
@@ -102,7 +103,7 @@ void Test7()
     Test("Test7", numbers, sizeof(numbers) / sizeof(int), expected);
 }
 
-// Î¨Ò»µÄÊı×ÖÊÇ0
+// å”¯ä¸€çš„æ•°å­—æ˜¯0
 void Test8()
 {
     int numbers[] = { -23, 0, 214, -23, 214, -23, 214 };
@@ -110,7 +111,7 @@ void Test8()
     Test("Test8", numbers, sizeof(numbers) / sizeof(int), expected);
 }
 
-// ³ıÁËÎ¨Ò»µÄÊı×Ö£¬ÆäËûÊı×Ö¶¼ÊÇ0
+// é™¤äº†å”¯ä¸€çš„æ•°å­—ï¼Œå…¶ä»–æ•°å­—éƒ½æ˜¯0
 void Test9()
 {
     int numbers[] = { 0, 3467, 0, 0, 0, 0, 0, 0 };

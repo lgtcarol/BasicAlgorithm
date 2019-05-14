@@ -3,7 +3,8 @@ public:
     int minNumberInRotateArray(vector<int> rotateArray) {
         if(rotateArray.empty())
             return 0;
-        int lo = 0;
+      //  int lo = 0;
+        int lo = -1;    // 如果初始化为 0 将无法处理 n == 2 的情况，初始化为 -1 就可以了
         int hi = rotateArray.size()-1;
         //没有旋转
         if(rotateArray[lo] < rotateArray[hi])

@@ -1,3 +1,7 @@
+//思路一：直接排序，返回下标为0
+//思路二：把0，1，2个元素的情况处理完；用O(N^2)遍历数组寻找pre>pnow的位置即可
+//思路三:二分查找
+
 class Solution {
 public:
     int minNumberInRotateArray(vector<int> rotateArray) {

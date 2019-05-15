@@ -23,5 +23,41 @@ public:
             return pHead;
         }
     }
+     /**
+    循环做法：链表问题请先明确你需要几个指针，各指针的功能及变化情况！
+    切忌糊涂，比如pre的next都不修改，这是个链表操作常规本质啊
+    */
+    ListNode* deleteDuplication(ListNode* pHead)
+    {
+        if(pHead == NULL)
+            return NULL;
+        if(pHead->next == NULL)
+            return pHead;
+        ListNode *newH = new ListNode(0); 
+        ListNode *pre = newH;
+        ListNode *cur = pHead;
+        bool flag = false;
+        while(cur!= NULL)
+        {
+           
+            while(cur->next && cur->val == cur->next->val)
+            {
+                flag = true;//标记当前节点是否重复
+                cur = cur->next;
+            }
+            if(flag){
+                pre->next = cur->next;   //出来时的cur是个重复节点
+                cur = cur->next;
+                flag = false;
+            }
+            else    
+            {
+                pre->next = cur;
+                pre = cur;
+                cur = cur->next;
+            }     
+        }
+        return newH->next;
+    }
 
 };

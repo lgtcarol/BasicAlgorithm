@@ -7,20 +7,21 @@ public:
         if (pHead==NULL)
             return NULL;
         if(pHead->next == NULL)
-            return pHead;
+            return pHead; 
         ListNode *current;
+        //当前节点是重复节点
         if(pHead->next->val == pHead->val)
         {
-            current = pHead->next->next;
-            while(current != NULL && current->val==pHead->val)
+            current = pHead->next->next;//至少从第三个节点开始才可能不重复
+            while(current != NULL && current->val == pHead->val)//因只考虑一个节点，故直接和本节点比较即可
                 current = current->next;
             return deleteDuplication(current);
-        }  
-        else
-        {
-            current = pHead->next;
+        }
+        //若不是重复节点，则直接递归往后链接即可
+        else{
+            current = pHead->next; 
             pHead->next = deleteDuplication(current);
-            return pHead;
+            return pHead;//只有不重复节点才有资格返回         
         }
     }
      /**

@@ -9,6 +9,7 @@
         {
             int mid = (lo+hi)/2;
             //low mid high本就将数组分成区间,先以index=high作为target进行二分查找定位
+            //且由于hi的游标式移动，不妨就用hi = len-1的情况理顺走势
             if(rotateArray[mid] > rotateArray[hi])//说明mid目前在前半段，目标区间需要右移
                 lo = mid;
             else if(rotateArray[mid] < rotateArray[hi])//说明在后半段，目标区间左移(往中间靠)

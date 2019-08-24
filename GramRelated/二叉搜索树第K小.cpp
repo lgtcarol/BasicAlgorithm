@@ -12,7 +12,7 @@ public:
             return res;
         if(pRoot->left)
             res = KthNode(pRoot->left, k);
-        if(!res)
+        if(!res)  //注意：这个res变量非常必要，因为找到后就不需要再遍历了！
         {
             cnt++;
             if(cnt == k)

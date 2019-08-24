@@ -19,3 +19,28 @@
         }
         return rotateArray[hi];
     }
+//纯粹自己的理解！（后知后觉：lo++ 或 hi-- 的最终目的和lo=mid hi=mid其实相同，只不过看自己能否理解到位）
+class Solution {
+public:
+    int minNumberInRotateArray(vector<int> rotateArray) {
+        if(rotateArray.size() == 0)
+            return 0;
+        if(rotateArray.size()== 1)
+            return rotateArray[0];
+        int len = rotateArray.size();
+        int lo = 0;
+        int hi = len-1;
+        while(lo+1<=hi)
+        {
+            int mid = (lo+hi)/2;
+            if(rotateArray[mid] < rotateArray[hi])
+                hi--;
+            else if(rotateArray[mid] > rotateArray[hi])
+                lo++;
+            else
+                hi--; //之前总过不了，是因为缺少考虑这种情况
+
+        }
+        return rotateArray[lo];
+    }
+};

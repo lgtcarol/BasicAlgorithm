@@ -6,7 +6,10 @@ using namespace std;
 #include<assert.h>
 
 void Combination(char *string ,int number,vector<char> &result);
-
+/**
+剑指上思路:在求n个字符的长度为m的组合时，我们把n个字符分成两部分：第一个字符和其余所有的字符。
+          将该问题分为了两个子问题，分别求n-1个字符中长度为m-1的组合，以及求n-1个字符中长度为m的组合。
+*/
 void Combination(char *str)
 {
     if(str == NULL)
